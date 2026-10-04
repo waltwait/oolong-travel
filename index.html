@@ -45,10 +45,11 @@ h1{font-size:26px;margin:0 0 6px;letter-spacing:.5px}
 .alert ol{margin:6px 0 0;padding-left:20px}
 .alert li{margin-bottom:4px}
 
-.tabs{display:flex;gap:8px;margin:22px 0 16px;position:sticky;top:0;z-index:5;
+.tabs{display:flex;gap:6px;margin:22px 0 16px;position:sticky;top:0;z-index:5;
   background:var(--bg);padding:10px 0}
 .tab{flex:1;text-align:center;padding:11px 8px;border-radius:11px;border:1px solid var(--line);
   background:var(--card);cursor:pointer;font-size:14px;font-weight:600;color:var(--muted)}
+.tab .ts{font-weight:400;font-size:11.5px}
 .tab.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 .day{display:none}
@@ -102,6 +103,8 @@ td a{color:var(--accent)}
 #doops .stop{margin-bottom:12px;background:#fdf1f4;border-color:#e8bcc8}
 .score{display:inline-block;margin:2px 0 4px;font-size:13px;font-weight:700;color:#fff;
   background:var(--accent2);border-radius:6px;padding:2px 9px}
+#ledger td.amt{text-align:right;font-variant-numeric:tabular-nums}
+#payers td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
 .num.oopsn{background:var(--must)}
 .verdict{display:inline-block;margin-top:7px;font-size:13px;font-weight:700;color:var(--must);
   background:#fff;border:1px solid #e8bcc8;border-radius:6px;padding:2px 9px}
@@ -145,9 +148,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 </div>
 
 <div class="tabs">
-  <div class="tab on" data-d="1">Day 1 · 10/3 六<br><span style="font-weight:400;font-size:11.5px">3 家 · 海鮮碳烤</span></div>
-  <div class="tab" data-d="2">Day 2 · 10/4 日<br><span style="font-weight:400;font-size:11.5px">2 家 · 故宮南院</span></div>
-  <div class="tab" data-d="oops">🤡 烏龍<br><span style="font-weight:400;font-size:11.5px">紀錄表 · <span id="oopscnt">0</span> 件</span></div>
+  <div class="tab on" data-d="1">Day 1<br><span class="ts">10/3 六</span></div>
+  <div class="tab" data-d="2">Day 2<br><span class="ts">10/4 日</span></div>
+  <div class="tab" data-d="money">💰 記帳<br><span class="ts">$<span id="moneytotal">0</span></span></div>
+  <div class="tab" data-d="oops">🤡 烏龍<br><span class="ts"><span id="oopscnt">0</span> 件</span></div>
 </div>
 
 <!-- ============ DAY 1 ============ -->
@@ -411,6 +415,25 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 
 </div>
 
+<!-- ============ 記帳 ============ -->
+<div class="day" id="dmoney">
+  <div class="box" style="margin-top:0">
+    <h3>💰 記帳</h3>
+    <table id="ledger">
+      <tr><th>項目</th><th style="text-align:right">金額</th><th>誰付</th></tr>
+      <tr><td>劉里長</td><td class="amt">330</td><td class="payer">華哲</td></tr>
+      <tr><td>嘉義人</td><td class="amt">135</td><td class="payer">華哲</td></tr>
+      <tr><td>和平</td><td class="amt">75</td><td class="payer">華哲</td></tr>
+      <tr><td>民主</td><td class="amt">135</td><td class="payer">裝逼</td></tr>
+      <tr><td>故宮南院門票</td><td class="amt">600</td><td class="payer">霸子</td></tr>
+    </table>
+  </div>
+  <div class="box">
+    <h3>🧾 誰付了多少</h3>
+    <table id="payers"></table>
+  </div>
+</div>
+
 <!-- ============ 烏龍 ============ -->
 <div class="day" id="doops">
 
@@ -549,6 +572,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
       document.querySelector('.tab[data-d="'+a.dataset.goto+'"]').click();
     });
   });
+  (function(){
+    var sum={},total=0;
+    document.querySelectorAll('#ledger tr').forEach(function(r){
+      var a=r.querySelector('.amt'),p=r.querySelector('.payer'); if(!a) return;
+      var v=Number(a.textContent); total+=v; sum[p.textContent]=(sum[p.textContent]||0)+v;
+      a.textContent='$'+v;
+    });
+    var h='';
+    Object.keys(sum).sort(function(x,y){return sum[y]-sum[x]}).forEach(function(k){h+='<tr><td>'+k+'</td><td>$'+sum[k]+'</td></tr>'});
+    h+='<tr><td><b>合計</b></td><td>$'+total+'</td></tr>';
+    document.getElementById('payers').innerHTML=h;
+    document.getElementById('moneytotal').textContent=total;
+  })();
   document.getElementById('oopscnt').textContent=document.querySelectorAll('#doops .stop').length;
 
   var done={};
