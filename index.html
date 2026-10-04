@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>嘉義火雞肉飯 2 日攻略｜10/3–10/4</title>
-<meta name="description" content="2026/10/3–10/4 嘉義兩日：火雞肉飯 4 家分兩天吃、薑母鴨晚餐、故宮南院。高鐵＋景坤接送＋市區機車。">
+<meta name="description" content="2026/10/3–10/4 嘉義兩日：火雞肉飯 4 家分兩天吃、薑母鴨晚餐、故宮南院。高鐵＋景坤載＋姑姑的車。">
 <meta name="theme-color" content="#c8551f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="火雞肉飯攻略">
 <meta property="og:type" content="website">
 <meta property="og:title" content="嘉義火雞肉飯 · 兩日 4 家">
 <meta property="og:image" content="https://waltwait.github.io/chiayi-turkey-rice/cover.jpg">
-<meta property="og:description" content="火雞肉飯 2＋2 家 · 薑母鴨 · 故宮南院 · 高鐵＋市區機車">
+<meta property="og:description" content="火雞肉飯 2＋2 家 · 薑母鴨 · 故宮南院 · 高鐵＋開車">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -135,7 +135,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
     <img src="cover.jpg" alt="嘉義傍晚的夕陽天際線" width="1600" height="1200">
     <div class="herotext">
       <h1>嘉義火雞肉飯 · 兩日 4 家</h1>
-      <div class="sub">2026 / 10 / 03（六）– 10 / 04（日）　新竹出發・高鐵＋景坤接送＋市區機車</div>
+      <div class="sub">2026 / 10 / 03（六）– 10 / 04（日）　新竹出發・高鐵＋景坤載（Day 1）＋姑姑的車（Day 2）</div>
     </div>
   </div>
   <div class="meta">
@@ -145,14 +145,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   </div>
   <button id="install">📲 安裝到手機主畫面</button>
 </header>
-
-<div class="alert">
-  <b>⚠️ 9/26 逐家查 Google 地圖，有兩件事要先知道：</b>
-  <ol>
-    <li><b>阿宏師光華總店目前顯示「暫時關閉」</b>（一個月內還有人去吃過，看起來是最近才停）。出發前一天打 <b>05-2233467</b> 問：沒開就照 Day 1 底下的 <b>B 案</b>。</li>
-    <li><b>劉里長已經搬家</b>：公明路 197 號舊址標示永久歇業，新店在<b>光彩街 414 號</b>（電話一樣），導航別設到舊地址。</li>
-  </ol>
-</div>
 
 <div class="progress">
   <b>吃完進度</b> <span id="cnt" style="float:right;color:#c8551f;font-weight:700">0 / 4</span>
@@ -185,7 +177,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
     <div class="num alt" style="cursor:default">🧳</div>
     <div class="body">
       <div class="name">霸子姑姑家放東西</div>
-      <div class="hours">下高鐵直接過去放行李。</div>
+      <div class="hours">下高鐵直接過去放行李。第一天都是景坤開車載我們。</div>
     </div>
   </div>
 
@@ -392,7 +384,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   <div class="stop break">
     <div class="num alt" style="cursor:default">🚗</div>
     <div class="body">
-      <div class="name">開車去故宮南院</div>
+      <div class="name">開姑姑的車去故宮南院</div>
       <div class="hours">故宮南院門票 $600（霸子付）。</div>
     </div>
   </div>
@@ -468,7 +460,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 <div class="day" id="dmoney">
   <div class="box" style="margin-top:0">
     <h3>💰 記帳</h3>
-    <table id="ledger" data-people="霸子,華哲,裝逼,拓也">
+    <table id="ledger" data-people="霸子,華哲,裝逼,拓也" data-settled="1">
       <tr><th>項目</th><th style="text-align:right">金額</th><th>誰付</th></tr>
       <tr><td>劉里長</td><td class="amt">330</td><td class="payer">華哲</td></tr>
       <tr><td>嘉義人</td><td class="amt">135</td><td class="payer">華哲</td></tr>
@@ -491,6 +483,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   </div>
   <div class="box" style="background:#eef4f0;border-color:#c3d8cd">
     <h3>🤝 分帳（<span id="npeople">4</span> 人平分）</h3>
+    <p id="settledbanner" style="display:none;background:#fff;border:1px solid #c3d8cd;border-radius:8px;padding:8px 12px;font-weight:700;color:var(--accent2)">✅ 帳都平了，已全部結清</p>
     <p id="sharetext"></p>
     <table id="balances"></table>
     <h3 style="margin-top:16px">💸 誰要轉給誰</h3>
@@ -585,15 +578,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   </table>
 </div>
 
-<div class="box">
-  <h3>🍚 實戰小提醒</h3>
-  <ul>
-    <li><b>點小碗、兩人共食一碗</b>，省下的胃留給小菜和湯 —— 各家真正的差異常在滷味跟湯。</li>
-    <li><b>雞肉「絲」飯 vs 雞肉「片」飯要分開記。</b>阿宏師、民主、和平的招牌都是片飯。</li>
-    <li>機車車廂放一件輕便雨衣以防萬一；晚上騎車回住宿注意安全。</li>
-  </ul>
-</div>
-
 <footer>
   營業時間與地址於 2026/9/26 用 Google 地圖逐家核對，高鐵車次查自台灣高鐵官網，租機車資訊整理自網路資料。<br>
   <b>出發當天早上請再掃一次「目前營業中」狀態。</b>
@@ -657,6 +641,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
     var th='';
     res.transfers.forEach(function(t){ th+='<tr><td><b>'+t.from+'</b> → <b>'+t.to+'</b></td><td style="text-align:right;font-weight:700">'+m(t.amount)+'</td></tr>'; });
     document.getElementById('transfers').innerHTML=th||'<tr><td>不用轉帳 🎉</td></tr>';
+    if(ledger.dataset.settled==='1'){
+      document.getElementById('settledbanner').style.display='block';
+      document.querySelectorAll('#transfers tr').forEach(function(r){ r.style.textDecoration='line-through'; r.style.opacity='.5'; r.firstElementChild.insertAdjacentHTML('afterbegin','✅ '); });
+      document.getElementById('moneytotal').insertAdjacentText('afterend',' · 已結清');
+    }
   })();
   document.getElementById('oopscnt').textContent=document.querySelectorAll('#doops .stop').length;
 
