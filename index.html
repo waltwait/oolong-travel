@@ -419,7 +419,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 <div class="day" id="dmoney">
   <div class="box" style="margin-top:0">
     <h3>💰 記帳</h3>
-    <table id="ledger">
+    <table id="ledger" data-people="霸子,華哲,裝逼,拓也">
       <tr><th>項目</th><th style="text-align:right">金額</th><th>誰付</th></tr>
       <tr><td>劉里長</td><td class="amt">330</td><td class="payer">華哲</td></tr>
       <tr><td>嘉義人</td><td class="amt">135</td><td class="payer">華哲</td></tr>
@@ -437,6 +437,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   <div class="box">
     <h3>🧾 誰付了多少</h3>
     <table id="payers"></table>
+  </div>
+  <div class="box" style="background:#eef4f0;border-color:#c3d8cd">
+    <h3>🤝 分帳（<span id="npeople">4</span> 人平分）</h3>
+    <p id="sharetext"></p>
+    <table id="balances"></table>
+    <h3 style="margin-top:16px">💸 誰要轉給誰</h3>
+    <table id="transfers"></table>
   </div>
 </div>
 
@@ -560,6 +567,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 </div>
 
 <div id="offline">📴 目前離線 —— 顯示的是已存到手機的版本，導航連結需要網路</div>
+<script src="settle.js"></script>
 <script>
 (function(){
   var tabs=document.querySelectorAll('.tab');
@@ -590,6 +598,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
     h+='<tr><td><b>合計</b></td><td>$'+total+'</td></tr>';
     document.getElementById('payers').innerHTML=h;
     document.getElementById('moneytotal').textContent=total;
+
+    // 分帳：計算在 settle.js
+    var ledger=document.getElementById('ledger');
+    var people=ledger.dataset.people.split(',');
+    var entries=[];
+    ledger.querySelectorAll('tr').forEach(function(r){
+      var a=r.querySelector('.amt'),p=r.querySelector('.payer'); if(!a) return;
+      entries.push({payer:p.textContent,amount:Number(a.textContent.replace('$',''))});
+    });
+    var res=settle(entries,people);
+    function m(v){ return '$'+v.toLocaleString('en-US',{maximumFractionDigits:2}); }
+    var shares=people.map(function(p){return res.share[p]});
+    var same=shares.every(function(v){return v===shares[0]});
+    document.getElementById('npeople').textContent=people.length;
+    document.getElementById('sharetext').innerHTML='總共 <b>'+m(res.total)+'</b>，每人應付 <b>'+(same?m(shares[0]):m(Math.min.apply(null,shares))+'–'+m(Math.max.apply(null,shares)))+'</b>';
+    var bh='<tr><th>誰</th><th style="text-align:right">已付</th><th style="text-align:right">差額</th></tr>';
+    people.forEach(function(p){
+      var b=res.balance[p];
+      bh+='<tr><td>'+p+'</td><td style="text-align:right">'+m(res.paid[p])+'</td><td style="text-align:right;font-weight:700;color:'+(b>0?'var(--accent2)':b<0?'var(--must)':'inherit')+'">'+(b>0?'收 '+m(b):b<0?'付 '+m(-b):'剛好')+'</td></tr>';
+    });
+    document.getElementById('balances').innerHTML=bh;
+    var th='';
+    res.transfers.forEach(function(t){ th+='<tr><td><b>'+t.from+'</b> → <b>'+t.to+'</b></td><td style="text-align:right;font-weight:700">'+m(t.amount)+'</td></tr>'; });
+    document.getElementById('transfers').innerHTML=th||'<tr><td>不用轉帳 🎉</td></tr>';
   })();
   document.getElementById('oopscnt').textContent=document.querySelectorAll('#doops .stop').length;
 
