@@ -1,7 +1,7 @@
 /* 嘉義火雞肉飯攻略 — 離線快取
    出門在外訊號不穩也能開，這是這個 PWA 最實際的價值。 */
 
-const CACHE = 'chiayi-turkey-rice-v20';
+const CACHE = 'chiayi-turkey-rice-v21';
 const ASSETS = [
   './',
   './index.html',
