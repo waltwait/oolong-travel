@@ -1,6 +1,6 @@
 # 烏龍出遊記：新 repo 與 GitHub Pages 研究提案
 
-研究日期：2026-10-05（Asia/Taipei）。狀態：使用者於 2026-10-05 確認公開 `oolong-travel` 與獨立收錄範圍；本文保留初始研究提案，實作結果另見 planning 與 README。
+研究日期：2026-10-05（Asia/Taipei）。狀態：2026-10-05 已完成公開 `oolong-travel` 與獨立網站。本文保留初始研究提案；最終採本站 GitHub Actions 發布 `docs/`，結果見 [驗收紀錄](2026-10-05-validation.md)、planning 與 README。
 
 ## 目標與目前理解
 
