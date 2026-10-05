@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>烏龍出遊記｜每一趟的故事</title>
+  <meta name="description" content="把走過的路，和路上的烏龍一起留下。每趟旅行的行程、美食評分、分帳與烏龍紀錄，都收在這裡。">
+  <meta name="theme-color" content="#c8551f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="烏龍出遊記">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="烏龍出遊記">
+  <meta property="og:description" content="每一趟旅行，和路上的烏龍。">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/journal.css">
+</head>
+<body>
+  <a class="skip-link" href="#trips">跳到旅行清單</a>
+  <div class="notebook">
+    <header class="masthead">
+      <div>
+        <h1>烏龍出遊記</h1>
+        <p class="intro">把走過的路，和路上的烏龍一起留下。</p>
+      </div>
+      <img class="brand-stamp" src="assets/icons/icon.svg" alt="" width="68" height="68">
+    </header>
+    <main>
+      <section class="next" aria-labelledby="next-heading">
+        <h2 id="next-heading">下一趟</h2>
+        <div id="next-trip"><p class="next-empty">還沒決定去哪裡，先把這次的故事收好。</p></div>
+      </section>
+      <section class="archive" aria-labelledby="archive-heading">
+        <div class="section-heading">
+          <h2 id="archive-heading">每一趟的故事</h2>
+          <span id="trip-count">1 趟旅行</span>
+        </div>
+        <ul class="trips" id="trips">
+          <li class="trip">
+            <a class="trip-link" href="chiayi-2026-10/">
+              <div class="trip-photo">
+                <img src="chiayi-2026-10/cover.jpg" alt="嘉義傍晚的夕陽天際線" width="1600" height="1200" fetchpriority="high">
+                <span class="trip-status">旅行回憶</span>
+              </div>
+              <div class="trip-story">
+                <span class="trip-place">嘉義</span>
+                <h3>火雞肉飯 · 兩日 4 家</h3>
+                <p class="trip-date"><time datetime="2026-10-03">2026/10/03</time>–<time datetime="2026-10-04">10/04</time><span>2 天 1 夜</span></p>
+                <p class="trip-summary">火雞肉飯、故宮南院，還有一路上的烏龍。行程、評分和分帳一起收好。</p>
+                <span class="trip-open">打開這趟出遊記 <span aria-hidden="true">↗</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <noscript><p class="quiet">目前顯示已收錄的嘉義出遊記；啟用 JavaScript 可查看最新旅行清單。</p></noscript>
+      </section>
+    </main>
+    <footer>
+      <p>有計畫的旅行，沒預告的烏龍。</p>
+      <button id="install" type="button" hidden>安裝烏龍出遊記</button>
+      <span class="footer-name">烏龍出遊記</span>
+    </footer>
+  </div>
+  <div id="offline" role="status" hidden>目前離線，顯示已存到手機的出遊記。</div>
+  <script src="trips.js"></script>
+  <script src="assets/home.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

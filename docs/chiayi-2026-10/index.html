@@ -7,14 +7,14 @@
 <meta name="description" content="2026/10/3–10/4 嘉義兩日：火雞肉飯 4 家分兩天吃、薑母鴨晚餐、故宮南院。高鐵＋景坤載＋姑姑的車。">
 <meta name="theme-color" content="#c8551f">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="火雞肉飯攻略">
+<meta name="apple-mobile-web-app-title" content="烏龍出遊記">
 <meta property="og:type" content="website">
 <meta property="og:title" content="嘉義火雞肉飯 · 兩日 4 家">
-<meta property="og:image" content="https://waltwait.github.io/chiayi-turkey-rice/cover.jpg">
+<meta property="og:image" content="https://waltwait.github.io/oolong-travel/chiayi-2026-10/cover.jpg">
 <meta property="og:description" content="火雞肉飯 2＋2 家 · 薑母鴨 · 故宮南院 · 高鐵＋開車">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <style>
 :root{
@@ -126,9 +126,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 #install:active{transform:scale(.97)}
 #offline{display:none;position:fixed;left:0;right:0;bottom:0;z-index:20;
   background:#2b2723;color:#fff;text-align:center;font-size:12.5px;padding:8px}
+.journal-nav{max-width:820px;margin:0 auto;padding:16px 16px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.journal-nav a{color:var(--accent);text-decoration:none;font-weight:700;padding:8px 0;min-height:44px;display:inline-flex;align-items:center}
+.journal-nav a:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
 </style>
 </head>
 <body>
+<nav class="journal-nav" aria-label="旅行總覽"><a href="../">‹ 烏龍出遊記</a><span>嘉義篇</span></nav>
 <div class="wrap">
 
 <header>
@@ -144,7 +148,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
     <span class="chip">Day 1 薑母鴨</span>
     <span class="chip">Day 2 故宮南院</span>
   </div>
-  <button id="install">📲 安裝到手機主畫面</button>
+  <button id="install" type="button" hidden>📲 安裝到手機主畫面</button>
 </header>
 
 <div class="progress">
@@ -649,7 +653,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
 
 </div>
 
-<div id="offline">📴 目前離線 —— 顯示的是已存到手機的版本，導航連結需要網路</div>
+<div id="offline" role="status" hidden>📴 目前離線 —— 顯示的是已存到手機的版本，導航連結需要網路</div>
 <script src="settle.js"></script>
 <script>
 (function(){
@@ -738,31 +742,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-
   render();
 })();
 
-/* ---------- PWA：安裝 + 離線 ---------- */
-(function(){
-  if('serviceWorker' in navigator){
-    window.addEventListener('load',function(){
-      navigator.serviceWorker.register('sw.js').catch(function(){});
-    });
-  }
-
-  var btn=document.getElementById('install'), deferred=null;
-  window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault(); deferred=e; btn.style.display='block';
-  });
-  btn.addEventListener('click',function(){
-    if(!deferred) return;
-    deferred.prompt();
-    deferred.userChoice.finally(function(){ deferred=null; btn.style.display='none'; });
-  });
-  window.addEventListener('appinstalled',function(){ btn.style.display='none'; });
-
-  if(window.matchMedia('(display-mode: standalone)').matches) document.body.classList.add('standalone');
-
-  var bar=document.getElementById('offline');
-  function net(){ bar.style.display = navigator.onLine ? 'none' : 'block'; }
-  window.addEventListener('online',net); window.addEventListener('offline',net); net();
-})();
 </script>
+<script src="../assets/app.js"></script>
 </body>
 </html>
