@@ -1,7 +1,7 @@
 /* 單一本站快取，各頁各自存取；升級時只清理本站的舊版快取。 */
 "use strict";
 const PREFIX = "oolong-travel-";
-const CACHE = PREFIX + "v1";
+const CACHE = PREFIX + "v2";
 const CORE = [
   "./", "index.html", "trips.js", "manifest.webmanifest",
   "assets/journal.css", "assets/home.js", "assets/app.js",

@@ -1,7 +1,7 @@
 const assert=require('assert');
 const settle=require('../docs/chiayi-2026-10/settle.js');
-const P=['霸子','華哲','裝逼','拓也'];
-const E=[['華哲',330],['華哲',135],['華哲',75],['裝逼',135],['霸子',600],['霸子',254],['霸子',900],['霸子',620],['霸子',215],['裝逼',130],['裝逼',100]].map(([payer,amount])=>({payer,amount}));
+const P=['霸子','瓦特','裝逼','拓也'];
+const E=[['瓦特',330],['瓦特',135],['瓦特',75],['裝逼',135],['霸子',600],['霸子',254],['霸子',900],['霸子',620],['霸子',215],['裝逼',130],['裝逼',100]].map(([payer,amount])=>({payer,amount}));
 const r=settle(E,P);
 
 assert.strictEqual(r.total,3494);
