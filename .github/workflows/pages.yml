@@ -1,0 +1,36 @@
+name: Publish Oolong Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ['docs/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: oolong-pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v7.0.1
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6.0.0
+      - name: Upload this site's static files
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: docs
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1

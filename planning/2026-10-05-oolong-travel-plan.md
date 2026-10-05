@@ -4,7 +4,7 @@
 
 **目標：** 一個獨立 repo、一個烏龍出遊記總覽，以及完整的嘉義子頁。
 
-**架構：** GitHub Pages 發布 `main:/docs`。靜態首頁讀取本站 `trips.js`，嘉義內容保留原 HTML，使用本站 manifest、service worker 與 App 腳本。沒有外部 Travel 資源、匯入、符號連結或共享資料。
+**架構：** 本站 GitHub Actions 發布 `main` 的 `docs/`；初始 branch 發布在 deploy job 等待 runner，改用本站的單一發布 job。靜態首頁讀取本站 `trips.js`，嘉義內容保留原 HTML，使用本站 manifest、service worker 與 App 腳本。沒有外部 Travel 資源、匯入、符號連結或共享資料。
 
 **技術：** HTML、CSS、JavaScript；原有分帳函式；Node 內建測試；Playwright 驗證手機與離線；無產品套件相依。
 
@@ -57,8 +57,8 @@
 
 ### 4. 建立、發布與本機交付
 
-- [ ] 完成可檢查成果後，建立公開 `waltwait/oolong-travel`，以 `main` 推送保留的來源歷史與新變更。
-- [ ] 設定 Pages 為 `main:/docs`；檢查 Pages build 成功，再查公開首頁與嘉義頁、圖片、manifest。
-- [ ] 把完整獨立 checkout 放到 `/Users/sb/Code/Project/oolong-travel`，提供網站、repo 與本機來源連結。
+- [x] 完成可檢查成果後，建立公開 `waltwait/oolong-travel`，以 `main` 推送保留的來源歷史與新變更。
+- [ ] 設定 Pages 為 GitHub Actions，由本站 workflow 發布 `main` 的 `docs/`；檢查 Pages build 成功，再查公開首頁與嘉義頁、圖片、manifest。
+- [x] 把完整獨立 checkout 放到 `/Users/sb/Code/Project/oolong-travel`，提供網站、repo 與本機來源連結。
 
 自查：所有使用者需求都有對應工作項目，沒有需要共用 Travel 的資源，沒有待填的程式介面。使用本對話原生執行，未委派其他 agents。

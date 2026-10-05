@@ -56,6 +56,6 @@ Safari 可透過分享選單加入主畫面；Android 支援安裝時會顯示�
 
 ## 發布
 
-GitHub Pages 設為 `Deploy from a branch`，來源 `main`、`/docs`。推送後等待 Pages build 成功，檢查首頁與各趟子頁再確認上線。
+GitHub Pages 的 Source 設為 `GitHub Actions`。`.github/workflows/pages.yml` 會在 `main` 的 `docs/` 或發布流程更新時，把本站 `docs/` 發布到 Pages；也可手動執行。推送後等待 `Publish Oolong Pages` 成功，檢查首頁與各趟子頁再確認上線。
 
 原有嘉義的 13 筆帳目合計 NT$3,939，4 人，已全部結清；9 件烏龍與評分榜均保留。來源頁面的計畫標題／描述也保留，未以搬移替代歷史內容修訂。

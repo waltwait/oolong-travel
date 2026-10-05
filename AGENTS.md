@@ -2,7 +2,7 @@
 
 - 使用繁體中文。修改前先檢查本機變更，安全時以 `git pull --ff-only` 同步。
 - 這是獨立公開 repo `waltwait/oolong-travel`；現有 Travel 是不同旅行，不匯入、共用或修改其行程、資料、styles、assets 或 skills。
-- GitHub Pages 發布 `main` 的 `/docs`。所有本站檔案與圖示都在本 repo；站內 URL 用相對路徑，適用 `/oolong-travel/`。
+- GitHub Pages 由本站 `.github/workflows/pages.yml` 發布 `main` 的 `docs/`。所有本站檔案與圖示都在本 repo；站內 URL 用相對路徑，適用 `/oolong-travel/`。
 - 總覽資料在 `docs/trips.js`，每趟網站在 `docs/{地點}-{YYYY-MM}/`；同月第二趟可加日或明確識別碼，既有網址不要任意改名。
 - 保留歷史旅行、手動筆記、評分、花費、付款人與結清狀態；不把已結束的旅行改成新的計畫。
 - 嘉義分帳在 `docs/chiayi-2026-10/settle.js`，測試在 `tests/settle.test.js`。金額與計算有變更時，執行測試並核對旅行實際帳目。
